@@ -34,5 +34,5 @@ while i < len(default_list):
 
 output_default_list = ' '.join(default_list)
 
-print(output_default_list)
 print('Вывод ID процесса в конце программы: ', id(default_list))
+print(output_default_list)
