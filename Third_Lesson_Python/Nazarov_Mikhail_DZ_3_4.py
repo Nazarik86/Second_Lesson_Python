@@ -16,3 +16,22 @@
 # }
 #
 # Сможете ли вы вернуть отсортированный по ключам словарь?
+
+
+
+def thesaurus_adv(*full_names_list: str):
+    dictionary_reg = {}
+
+    for full_name in full_names_list:
+        name, surname = full_name.split()
+        surname_dictionary_reg = dictionary_reg.setdefault(surname[0], {})
+        name_dictionary_reg = surname_dictionary_reg.setdefault(name[0], [])
+        name_dictionary_reg.append(full_name)
+
+    return dictionary_reg
+
+print(
+    thesaurus_adv(
+        "Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева"
+    )
+)
