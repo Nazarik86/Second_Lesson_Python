@@ -18,7 +18,6 @@
 # Сможете ли вы вернуть отсортированный по ключам словарь?
 
 
-
 def thesaurus_adv(*full_names_list: str):
     dictionary_reg = {}
 
@@ -29,6 +28,7 @@ def thesaurus_adv(*full_names_list: str):
         name_dictionary_reg.append(full_name)
 
     return dictionary_reg
+
 
 print(
     thesaurus_adv(
