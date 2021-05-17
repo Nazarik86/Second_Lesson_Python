@@ -8,7 +8,7 @@
 # "два"
 
 def num_translate_adv(from_english: str):
-    translation_rezult_dictionary = {
+    translation_result_dictionary = {
         'one': 'один',
         'two': 'два',
         'three': 'три',
@@ -21,15 +21,16 @@ def num_translate_adv(from_english: str):
         'ten': 'десять',
     }
 
-    translation_rezult = translation_rezult_dictionary.get(from_english.lower())
+    translation_result = translation_result_dictionary.get(from_english.lower())
 
-    if translation_rezult is None:
+    if translation_result is None:
         return None
 
     if from_english.istitle():
-        return translation_rezult.capitalize()
+        return translation_result.capitalize()
 
-    return translation_rezult
+    return translation_result
+
 
 lower_case = num_translate_adv('seven')
 capitalize_case = num_translate_adv('Eight')
