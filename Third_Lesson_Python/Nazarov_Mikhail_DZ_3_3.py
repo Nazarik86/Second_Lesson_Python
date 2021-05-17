@@ -20,6 +20,7 @@ def thesaurus(names):
             names_dict.setdefault(name[:1], name)
     return names_dict
 
+
 users = ("Иван", "Мария", "Петр", "Илья")
 
 name_list = thesaurus(users)
