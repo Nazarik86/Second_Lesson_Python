@@ -9,3 +9,19 @@
 # }
 #
 # Подумайте: полезен ли будет вам оператор распаковки? Сможете ли вы вернуть отсортированный по ключам словарь?
+
+
+def thesaurus(names):
+    names_dict = {}
+    for name in names:
+        if names_dict.get(name[0]):
+            names_dict[name[:1]] = names_dict[name[:1]], name
+        else:
+            names_dict.setdefault(name[:1], name)
+    return names_dict
+
+users = ("Иван", "Мария", "Петр", "Илья")
+
+name_list = thesaurus(users)
+
+print(name_list)
