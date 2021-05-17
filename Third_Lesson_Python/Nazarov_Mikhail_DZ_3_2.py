@@ -7,39 +7,34 @@
 # >>> num_translate_adv("two")
 # "два"
 
-# Создаём функцию для сравнения ключа и значения ключа, и возвращает ключ из словаря:
-def num_translate(dictionary, value):
-    for k, v in dictionary.items():
-        if v == value:
-            return k
+def num_translate_adv(from_english: str):
+    translation_rezult_dictionary = {
+        'one': 'один',
+        'two': 'два',
+        'three': 'три',
+        'four': 'четыре',
+        'five': 'пять',
+        'six': 'шесть',
+        'seven': 'семь',
+        'eight': 'восемь',
+        'nine': 'девять',
+        'ten': 'десять',
+    }
 
+    translation_rezult = translation_rezult_dictionary.get(from_english.lower())
 
-# Определяем словарь:
-words = {
-    'один': 'one',
-    'Один': 'One',
-    'Два': 'Two',
-    'два': 'two',
-    'три': 'three',
-    'Три': 'Three',
-    'четыре': 'four',
-    'Четыре': 'Four',
-    'Пять': 'Five',
-    'пять': 'five',
-    'Шесть': 'Six',
-    'шесть': 'six',
-    'Семь': 'Seven',
-    'семь': 'seven',
-    'Восемь': 'Eight',
-    'восемь': 'eight',
-    'Девять': 'Nine',
-    'девять': 'nine',
-    'Десять': 'Ten',
-    'десять': 'ten',
-}
+    if translation_rezult is None:
+        return None
 
-# Просим пользователя ввести число от 1 до 10 на английском языке
-translate = input('Введите число от 1 до 10 на английском языке: ')
+    if from_english.istitle():
+        return translation_rezult.capitalize()
 
-# Выводим сообщение с переводом или None, если такого значения нет в словаре
-print('Введенное число переводится как: ', num_translate(words, str(translate)))
+    return translation_rezult
+
+lower_case = num_translate_adv('seven')
+capitalize_case = num_translate_adv('Eight')
+none_case = num_translate_adv('eleven')
+
+print(lower_case)
+print(capitalize_case)
+print(none_case)
