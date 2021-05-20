@@ -9,3 +9,24 @@
 # вернуть None. Можно ли сделать работу функции не зависящей от того, в каком регистре был передан аргумент?
 # В качестве примера выведите курсы доллара и евро.
 
+from requests import get
+
+
+def currency_rates(code):
+    currency_code_list = []
+    currency_value_list = []
+    response = get('http://www.cbr.ru/scripts/XML_daily.asp')
+    content = response.content.decode(encoding=response.encoding)
+    for el in content.split('<CharCode>')[1:]:
+        currency_code_list.append(el.split('</CharCode>')[0])
+    for item in content.split('<Value>')[1:]:
+        currency_value_list.append(item.split('</Value>')[0].replace(',', '.'))
+    pairs_dict = dict(zip(currency_code_list, currency_value_list))
+    return pairs_dict.get(code.upper())
+    # for key, val in pairs_dict.items():
+    #     if code.upper() == key:
+    #         return float(val)
+
+
+print(currency_rates('USD'))
+print(currency_rates('EUR'))
