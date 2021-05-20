@@ -12,21 +12,27 @@
 from requests import get
 
 
+# Функция для вывода курсов валют, полученных с API
 def currency_rates(code):
+    # Создаём два пустых списка, в которые поместим данные с API
     currency_code_list = []
     currency_value_list = []
+    # Получаем ответ от API
     response = get('http://www.cbr.ru/scripts/XML_daily.asp')
+    # Меняем кодировку полученных данных
     content = response.content.decode(encoding=response.encoding)
+    # Проверяем наличие кода валюты и добавляем в список, если есть совпадение
     for el in content.split('<CharCode>')[1:]:
         currency_code_list.append(el.split('</CharCode>')[0])
+    # Возвращем курс валюты и переводим его в числовой тип, меняя разделитель дробной части
     for item in content.split('<Value>')[1:]:
         currency_value_list.append(item.split('</Value>')[0].replace(',', '.'))
+    # Сохраняем полученные значения в словарь
     pairs_dict = dict(zip(currency_code_list, currency_value_list))
+    # Возвращаем словарь и приводим его к единому регистру
     return pairs_dict.get(code.upper())
-    # for key, val in pairs_dict.items():
-    #     if code.upper() == key:
-    #         return float(val)
 
 
-print(currency_rates('USD'))
+print(currency_rates('UsD'))
 print(currency_rates('EUR'))
+print(currency_rates('gBP'))
