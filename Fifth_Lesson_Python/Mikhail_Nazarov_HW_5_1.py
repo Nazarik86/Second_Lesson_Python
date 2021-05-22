@@ -18,4 +18,5 @@ def odd_nums(n):
 
 
 check = odd_nums(15)
+
 print(list(check))
