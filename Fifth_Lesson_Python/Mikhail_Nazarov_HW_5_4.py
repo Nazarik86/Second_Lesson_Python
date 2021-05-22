@@ -17,5 +17,3 @@ print('Вывод цикла: ', result)
 
 result_second = [j for i, j in zip(src, src[1:]) if j > i]
 print('Вывод генератора: ', result_second)
-
-
