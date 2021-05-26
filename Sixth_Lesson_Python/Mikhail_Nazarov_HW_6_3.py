@@ -22,7 +22,6 @@ users = []
 users_hobby = []
 result_dict = {}
 
-
 # Функция для обработки текста, чтобы вывод был красивее
 def clean_data(data):
     return ' '.join(data.split(',')).strip()
